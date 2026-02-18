@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kajzer Tweaks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameTutor AI | Porady do gier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+<h1>Kajzer Tweaks</h1>
+<p class="subtitle">Ultimate Windows 11 Optimization Platform</p>
+
+<div class="cards">
+<div class="card">
+<h2>Windows 11 Modifications</h2>
+<p>Download advanced Windows 11 mods, debloat, performance & visuals.</p>
+<a class="btn" href="https://mega.nz/folder/60BmmaTD#XUQzTl9E0j35YUyfeGxfFQ" target="_blank">Download ZIP</a>
+</div>
+
+<div class="card">
+<h2>Windows PowerShell Tweaks</h2>
+<p>Run Kajzer Tweaks directly from PowerShell.</p>
+<pre class="code">iwr -useb https://raw.githubusercontent.com/KajzerWin11Mods/Kajzer_Tweaks/refs/heads/main/Kajzer.ps1 | iex</pre>
+<button class="btn copy" onclick="copyCmd()">Copy Command</button>
+</div>
+</div>
+
+<footer>
+<span>Kajzer Tweaks © 2026</span>
+<span>Better than ChrisTitus</span>
+</footer>
+</div>
+
+<main class="container">
+  <header class="hero">
+    <p class="label">Poradnik gracza</p>
+    <h1>GameTutor AI</h1>
+    <p class="subtitle">Wybierz grę, wpisz czego chcesz się nauczyć i otrzymaj natychmiastową poradę krok po kroku.</p>
+  </header>
+
+  <section class="game-tabs" aria-label="Wybór gry">
+    <button class="tab active" data-game="fortnite">Fortnite</button>
+    <button class="tab" data-game="cs2">CS2</button>
+    <button class="tab" data-game="minecraft">Minecraft</button>
+    <button class="tab" data-game="valorant">Valorant</button>
+    <button class="tab" data-game="lol">League of Legends</button>
+  </section>
+
+  <section class="advisor-card">
+    <div class="card-top">
+      <h2 id="selectedGame">Fortnite — trener umiejętności</h2>
+      <span class="online-dot">Asystent online</span>
+    </div>
+
+    <label for="question">Czego nie wiesz lub czego chcesz się nauczyć?</label>
+    <textarea id="question" placeholder="Np. Jak szybciej budować i wygrywać walki 1v1?"></textarea>
+
+    <div class="actions">
+      <button id="generateBtn" class="btn">Generuj odpowiedź</button>
+      <button id="exampleBtn" class="btn secondary">Wstaw przykład</button>
+    </div>
+
+    <article class="answer" id="answerBox" aria-live="polite">
+      <h3>Odpowiedź AI</h3>
+      <p>Wpisz pytanie i kliknij <strong>Generuj odpowiedź</strong>, a dostaniesz poradę dopasowaną do wybranej gry.</p>
+    </article>
+  </section>
+
+  <section class="games-grid">
+    <article class="game-info">
+      <h3>Fortnite</h3>
+      <p>Budowanie, aim, rotacje, endgame i ustawienia pod tryb rankingowy.</p>
+    </article>
+    <article class="game-info">
+      <h3>CS2</h3>
+      <p>Crosshair placement, granaty, ekonomia rund i poprawa reakcji.</p>
+    </article>
+    <article class="game-info">
+      <h3>Inne gry</h3>
+      <p>System łatwo rozbudować o kolejne zakładki i nowe poradniki.</p>
+    </article>
+  </section>
+</main>
+
+<script>
+function copyCmd(){
+navigator.clipboard.writeText("iwr -useb https://raw.githubusercontent.com/KajzerWin11Mods/Kajzer_Tweaks/refs/heads/main/Kajzer.ps1 | iex");
+alert("Command copied!");
+const tabs = document.querySelectorAll('.tab');
+const selectedGameTitle = document.getElementById('selectedGame');
+const questionInput = document.getElementById('question');
+const answerBox = document.getElementById('answerBox');
+const generateBtn = document.getElementById('generateBtn');
+const exampleBtn = document.getElementById('exampleBtn');
+
+const gameNames = {
+  fortnite: 'Fortnite',
+  cs2: 'CS2',
+  minecraft: 'Minecraft',
+  valorant: 'Valorant',
+  lol: 'League of Legends'
+};
+
+let currentGame = 'fortnite';
+
+const exampleQuestions = {
+  fortnite: 'Jak poprawić budowanie i aim w 7 dni?',
+  cs2: 'Jak wygrywać więcej pojedynków na Mirage?',
+  minecraft: 'Jak szybko rozwijać bazę na survivalu?',
+  valorant: 'Jak grać lepiej po stronie atakującej?',
+  lol: 'Jak wygrywać linię i lepiej farmić?' 
+};
+
+function buildAdvice(game, question) {
+  const q = question.toLowerCase();
+
+  const tips = {
+    fortnite: [
+      'Trening 15 minut dziennie w trybie Creative: 90s, ramp rush i szybkie edity.',
+      'Walka 1v1: zawsze trzymaj wysokość i kończ akcję peace control + shotgun.',
+      'Rotacje: planuj trasę pod storm i noś minimum 2 sloty leczenia.'
+    ],
+    cs2: [
+      'Ustaw celownik na wysokości głowy i czyść kąty po kolei, bez biegania na ślepo.',
+      'Codziennie 20 minut DM + 10 minut treningu recoilu ulubionej broni.',
+      'Naucz 2 smoke\'i i 1 flasha na każdą mapę, którą grasz najczęściej.'
+    ],
+    minecraft: [
+      'Najpierw żelazo + tarcza, potem szybki enchant table i farma jedzenia.',
+      'Zaplanuj bazę: magazyn, miejsce na craft i bezpieczne wejście z oświetleniem.',
+      'Na Nether przygotuj fire resistance i złote jabłka, zanim ruszysz dalej.'
+    ],
+    valorant: [
+      'Przed rundą ustal rolę: entry, support lub lurk i trzymaj się planu.',
+      'Trenuj burst i kontrolę odrzutu na 2-3 najczęściej używanych broniach.',
+      'Po postawieniu spike\'a graj na czas i crossfire, zamiast pojedynczych peeków.'
+    ],
+    lol: [
+      'Skup się na last hitach: cel 70+ CS w 10 min na początku nauki.',
+      'Kontroluj fale minionów i warduj rzekę przed agresywną grą.',
+      'Po wygranej linii roluj przewagę: smok, herald i wspieranie innych alei.'
+    ]
+  };
+
+  let extra = 'Zapisz mecz i obejrzyj 2 błędy po każdej grze — to najszybsza droga do progresu.';
+
+  if (q.includes('ustaw') || q.includes('settings')) {
+    extra = 'Sprawdź ustawienia: stabilne FPS, niskie opóźnienie i czułość, którą kontrolujesz bez szarpania.';
+  } else if (q.includes('aim') || q.includes('cel')) {
+    extra = 'Rób krótkie sesje aim-treningu codziennie i skup się na dokładności, nie tylko na szybkości.';
+  } else if (q.includes('ranking') || q.includes('ranga')) {
+    extra = 'Graj mniej, ale jakościowo: 2-4 mecze z pełnym skupieniem i krótką analizą po każdym.';
+  }
+
+  return `Pytanie: "${question}"\n\nPlan dla gry ${gameNames[game]}:\n1. ${tips[game][0]}\n2. ${tips[game][1]}\n3. ${tips[game][2]}\n\nDodatkowa wskazówka: ${extra}`;
+}
+
+function updateActiveTab(game) {
+  currentGame = game;
+  tabs.forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.game === game);
+  });
+  selectedGameTitle.textContent = `${gameNames[game]} — trener umiejętności`;
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => updateActiveTab(tab.dataset.game));
+});
+
+generateBtn.addEventListener('click', () => {
+  const question = questionInput.value.trim();
+  if (!question) {
+    answerBox.innerHTML = '<h3>Odpowiedź AI</h3><p>Najpierw wpisz pytanie, a wtedy wygeneruję poradę do wybranej gry.</p>';
+    return;
+  }
+
+  const response = buildAdvice(currentGame, question);
+  answerBox.innerHTML = `<h3>Odpowiedź AI</h3><pre>${response}</pre>`;
+});
+
+exampleBtn.addEventListener('click', () => {
+  questionInput.value = exampleQuestions[currentGame];
+  questionInput.focus();
+});
+</script>
+</body>
+</html>
